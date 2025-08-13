@@ -73,7 +73,8 @@ plt.show()
 - **plt.grid()**: Se agrega una cuadrícula para mejorar la visualización.
 - **plt.legend()**: Se muestra la etiqueta de la señal.
 
-![alt text](image.png)
+<img width="1404" height="702" alt="image" src="https://github.com/user-attachments/assets/33eec203-f5f6-4ccb-afeb-1c86cc0f32e5" />
+
 #### Cálculo: 
 ```
 suma = 0
@@ -123,8 +124,8 @@ print(f"Coeficiente de variación: {coef:.2f} %")
 ```
 Se imprimen, organiza y presenta cálculos de forma legible, permitiendo verificar que los métodos utilizados para calcular la media, la desviación estándar y el coeficiente de variación sean correctos.
 
-![alt text](image-1.png)
-![alt text](image-2.png)
+<img width="426" height="205" alt="image" src="https://github.com/user-attachments/assets/4a331170-a3e7-4299-a670-a859e7f27dc6" />
+
 
 #### Histograma con PDF ajustada
 ```
@@ -154,7 +155,8 @@ plt.show()
 ```
 Se ajusta una distribución normal a los datos de una señal EMG y la grafica sobre un histograma. Primero, estima la media y la desviación estándar de la señal, luego genera y escala una curva normal, y finalmente la grafica junto con las barras del histograma para analizar cómo se distribuyen los valores de la señal.
 
-![alt text](image-3.png)
+!<img width="1438" height="717" alt="image" src="https://github.com/user-attachments/assets/e2a76361-d3b0-421c-a98f-df016f6f90dc" />
+
 
 #### Función de probabilidad acumulativa (CDF)
 ```
@@ -176,7 +178,8 @@ Este código calcula y grafica la Función de Probabilidad Acumulativa (CDF) de 
 
 Se configura la figura con plt.figure(figsize=(10,6)) y se grafica la CDF con plt.plot(sorted_data, cdf, label="CDF (Empírica)"), donde el eje X representa la amplitud de la señal y el Y la probabilidad acumulada. Finalmente, se agregan título, etiquetas, cuadrícula y leyenda para mejorar la visualización, mostrando cómo se distribuyen los valores de la señal.
 
-![alt text](image-4.png)
+<img width="1191" height="708" alt="image" src="https://github.com/user-attachments/assets/3d8074dd-73ee-4887-8ff0-9904cc4968d7" />
+
 ### Que es el SNR?
 
 El SNR (Signal-to-Noise Ratio) es una medida que nos dice qué tan fuerte es una señal en comparación con el ruido que la acompaña. En términos simples, es como tratar de escuchar a alguien hablar en una fiesta ruidosa: si la voz es clara y fuerte en comparación con el ruido de fondo, el SNR es alto; si apenas se distingue lo que dice entre todo el ruido, el SNR es bajo.
@@ -276,11 +279,14 @@ Aquí se introduce tres tipos de ruido en una señal original (gaussiano, impuls
 
 Luego, imprime los valores de SNR en decibeles (dB), permitiendo comparar cuánto afecta cada tipo de ruido a la señal. Finalmente, organiza las señales modificadas en una lista con su nombre, SNR y color asignado, lo que facilita su posterior graficación para visualizar el impacto de cada ruido en la señal original.
 
-![alt text](image-5.png)
+<img width="1432" height="712" alt="image" src="https://github.com/user-attachments/assets/c0afebf4-90cf-4bc1-977f-8de9f3aab9b3" />
 
-![alt text](image-6.png)
 
-![alt text](image-7.png)
+<img width="1410" height="703" alt="image" src="https://github.com/user-attachments/assets/fc14a55c-01d3-4dff-85eb-fd42476d65a7" />
+
+
+<img width="1408" height="702" alt="image" src="https://github.com/user-attachments/assets/c33e6ed7-ff46-4203-bff4-a8efb25a1983" />
+
 
 ## Curtosis
 
@@ -297,8 +303,9 @@ La curtosis es una medida estadística que describe la forma de la distribución
 - Una curtosis alta (como en este caso, 17.90) indica que hay más valores extremos y un pico más pronunciado que en una distribución normal.
 
 - La curtosis excesiva (14.90) es la curtosis ajustada restando 3 (que es el valor de la distribución normal). Un valor tan alto sugiere que la señal EMG presenta picos muy marcados y eventos inusuales con más frecuencia que lo que sería “normal”.
+  
+<img width="1389" height="720" alt="image" src="https://github.com/user-attachments/assets/c2e2c9b5-4bc7-4347-bcd7-7e499a6c0d83" />
 
-![alt text](image-8.png)
 ## Análisis de resultados.
 
 Se procesó una señal EMG , obteniendo sus estadísticos descriptivos como la media, desviación estándar y coeficiente de variación, los cuales permitieron describir su comportamiento. El histograma reveló que la señal sigue una distribución normal, mientras que la función de probabilidad mostró cómo se distribuyen los valores de la señal y permitió analizar la probabilidad de encontrar valores en rangos específicos.
