@@ -1,6 +1,5 @@
 # lab--1-
-# lab--1-
-# Lab-1 Análisis estadístico de la señal UMNG
+
 ## INTRODUCCIÓN:
 Para el desarrollo de este informe de laboratorio, se realizó un análisis estadistico de señanes biomédicas extraidas de la Pagina Physionet
 y seleccionamos una señal EMG; esta herramienta es fundamental ya que por medio de ella se extrae informacion relevante con datos para permitir llegar al desarrollo de esta practica.
