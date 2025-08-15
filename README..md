@@ -2,7 +2,7 @@
 
 ## INTRODUCCIÓN:
 Para el desarrollo de este informe de laboratorio, se realizó un análisis estadistico de señanes biomédicas extraidas de la Pagina Physionet
-y seleccionamos una señal EMG; esta herramienta es fundamental ya que por medio de ella se extrae informacion relevante con datos para permitir llegar al desarrollo de esta practica.
+y seleccionamos una señal EMG; esta herramienta es fundamental ya que por medio de ella se extrae información relevante con datos para permitir llegar al desarrollo de esta practica.
 Para la programación, se utilizo la herramienta python que permite implementar algoritmos para calcular y analizar los datos proporcionados por la señal, graficarlos, contaminar la señal, y otras opciones más que se observarán en éste informe.
 ## Descripción de los datos:
 Los datos se recopilaron con un sistema de monitorización EMG Medelec Synergy N2 (Oxford Instruments Medical, Old Woking, Reino Unido). Se colocó un electrodo de aguja concéntrico de 25 mm en el músculo tibial anterior de cada sujeto. A continuación, se le pidió al paciente que flexionara el pie suavemente contra resistencia. El electrodo de aguja se reposicionó hasta que se identificaron potenciales de unidad motora con un tiempo de ascenso rápido. A continuación, se recopilaron datos durante varios segundos, momento en el que se le pidió al paciente que se relajara y se retiró la aguja.
@@ -308,6 +308,15 @@ La curtosis es una medida estadística que describe la forma de la distribución
 ## Adquisición de la señal fisiologíca 
 ## Captura de la señal 
 En primera instancia se tomara de referencia el musculo sóleo y musculo tibial anterior, estos pertenecientes a la parte anterior-inferior de la pierna, con el fin de capturar la señal EMG proveniente de dicho musculo, donde se utilizara una DAQ que es el sistema de adquisición de datos permitiendo convertir la señal analoga generada por el musculo en una señal digital que se procesara en una interfaz en python. 
+
+Para la realizacióin de la interfaz, se debe tener la configuración del
+...
+# ---------- Configuración de la DAQ ----------
+CHANNEL = "Dev5/ai0"           # Cambiar según el canal EMG conectado
+SAMPLE_RATE = 1000             # Frecuencia de muestreo en Hz
+SAMPLES_PER_READ = 100         # Cuántas muestras por lectura
+DURATION = 10                  # Duración máxima en segundos
+...
 
 ## Análisis de resultados.
 
