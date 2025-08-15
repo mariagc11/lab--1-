@@ -309,9 +309,19 @@ La curtosis es una medida estadística que describe la forma de la distribución
 ## Captura de la señal 
 En primera instancia se tomara de referencia el musculo sóleo y musculo tibial anterior, estos pertenecientes a la parte anterior-inferior de la pierna, con el fin de capturar la señal EMG proveniente de dicho musculo, donde se utilizara una DAQ que es el sistema de adquisición de datos permitiendo convertir la señal analoga generada por el musculo en una señal digital que se procesara en una interfaz en python. 
 
-Para la realizacióin de la interfaz, se debe tener la configuración del
+Para la realizacióin de la interfaz, se debe tener la configuración de la DAQ
+...
+class EMGTask(Task):
+    def _init_(self):
+        Task._init_(self)
+        self.CreateAIVoltageChan(CHANNEL, "", daqc.DAQmx_Val_Cfg_Default,
+                                 -5.0, 5.0, daqc.DAQmx_Val_Volts, None)
+        self.CfgSampClkTiming("", SAMPLE_RATE, daqc.DAQmx_Val_Rising,
+                              daqc.DAQmx_Val_ContSamps, SAMPLES_PER_READ)
 
-<img width="1053" height="148" alt="image" src="https://github.com/user-attachments/assets/40af1824-25d5-42f4-9dac-deaef0bf4680" />
+
+...
+
 
 ## Análisis de resultados.
 
