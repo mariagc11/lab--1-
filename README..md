@@ -306,7 +306,7 @@ La curtosis es una medida estadística que describe la forma de la distribución
 <img width="1389" height="720" alt="image" src="https://github.com/user-attachments/assets/c2e2c9b5-4bc7-4347-bcd7-7e499a6c0d83" />
 
 ## Adquisición de la señal fisiologíca 
-##Captura de la señal 
+## Captura de la señal 
 En primera instancia se tomara de referencia el musculo sóleo y musculo tibial anterior, estos pertenecientes a la parte anterior-inferior de la pierna, con el fin de capturar la señal EMG proveniente de dicho musculo, donde se utilizara una DAQ que es el sistema de adquisición de datos permitiendo convertir la señal analoga generada por el musculo en una señal digital que se procesara en una interfaz en python. 
 
 ## Análisis de resultados.
