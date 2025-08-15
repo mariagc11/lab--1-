@@ -310,6 +310,8 @@ La curtosis es una medida estadística que describe la forma de la distribución
 Se procesó una señal EMG , obteniendo sus estadísticos descriptivos como la media, desviación estándar y coeficiente de variación, los cuales permitieron describir su comportamiento. El histograma reveló que la señal sigue una distribución normal, mientras que la función de probabilidad mostró cómo se distribuyen los valores de la señal y permitió analizar la probabilidad de encontrar valores en rangos específicos.
 Posteriormente, se añadió ruido gaussiano, de impulso y tipo artefacto, evaluando su alteración mediante el cálculo del SNR.
 
+k
+
 ## Conclusión. 
 El análisis estadístico permitió caracterizar la señal EMG, evidenciando su variabilidad y comportamiento mediante la media, desviación estándar y coeficiente de variación. La distribución aproximadamente normal.
 La introducción de distintos tipos de ruido permitió evaluar su impacto en la calidad de la señal. Esto destaca la importancia del cálculo del SNR como herramienta para medir la degradación de la señal y la necesidad de aplicar filtros adecuados según el tipo de ruido presente
