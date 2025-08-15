@@ -305,6 +305,8 @@ La curtosis es una medida estadística que describe la forma de la distribución
   
 <img width="1389" height="720" alt="image" src="https://github.com/user-attachments/assets/c2e2c9b5-4bc7-4347-bcd7-7e499a6c0d83" />
 
+## Señal fisiologíca 
+
 ## Análisis de resultados.
 
 Se procesó una señal EMG , obteniendo sus estadísticos descriptivos como la media, desviación estándar y coeficiente de variación, los cuales permitieron describir su comportamiento. El histograma reveló que la señal sigue una distribución normal, mientras que la función de probabilidad mostró cómo se distribuyen los valores de la señal y permitió analizar la probabilidad de encontrar valores en rangos específicos.
