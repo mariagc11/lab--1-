@@ -305,7 +305,7 @@ La curtosis es una medida estadística que describe la forma de la distribución
   
 <img width="1389" height="720" alt="image" src="https://github.com/user-attachments/assets/c2e2c9b5-4bc7-4347-bcd7-7e499a6c0d83" />
 
-## Señal fisiologíca 
+## Adquisición de la señal fisiologíca 
 
 ## Análisis de resultados.
 
