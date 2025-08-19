@@ -307,10 +307,24 @@ La curtosis es una medida estadística que describe la forma de la distribución
 
 ## Adquisición de la señal fisiologíca 
 ## Captura de la señal 
-En primera instancia se tomara de referencia el musculo sóleo y musculo tibial anterior, estos pertenecientes a la parte anterior-inferior de la pierna, con el fin de capturar la señal EMG proveniente de dicho musculo, donde se utilizara una DAQ que es el sistema de adquisición de datos permitiendo convertir la señal analoga generada por el musculo en una señal digital que se procesara en una interfaz en python. 
+En primera instancia se tomara de referencia el musculo sóleo y musculo tibial anterior, estos pertenecientes a la parte anterior-inferior de la pierna, con el fin de capturar la señal EMG proveniente de dicho musculo, teniendo en cuenta que se procesara mediante un DAQ para lograr observar la señal a una frecuencia adecuada para observar correctamente la representación de la actividad muscular, la señal adquirida fue exportada en formato .txt para proceder a analizar. 
 
-Para la realizacióin de la interfaz, se debe tener la configuración de la DAQ
-...
+Para visualizar la señal adquirida se desarrolla una interfaz en Python para la lectura, vicualización y análisis de dicha señal, como se presenta a continuación: 
+
+Se debe realizar la respectiva configuración de la DAQ, que es la que procesara la señal
+
+```
+CHANNEL = "Dev5/ai0"           # Cambiar según el canal EMG conectado
+SAMPLE_RATE = 1000             # Frecuencia de muestreo en Hz
+SAMPLES_PER_READ = 100         # Cuántas muestras por lectura
+DURATION = 10                  # Duración máxima en segundos
+
+```
+A partir de ello se implementa una interfaz que permitira iniciar y obtener la adquisión de la señal EMG, con el fin de visualizarla en tiempo real, así mismo se guardaran los datos en un archivo CSV para lograr realizarle un analisis estadistico. 
+
+## Clase para adquirir la señal EMG
+
+```
 class EMGTask(Task):
     def _init_(self):
         Task._init_(self)
@@ -319,10 +333,59 @@ class EMGTask(Task):
         self.CfgSampClkTiming("", SAMPLE_RATE, daqc.DAQmx_Val_Rising,
                               daqc.DAQmx_Val_ContSamps, SAMPLES_PER_READ)
 
+    def read_data(self):
+        data = np.zeros((SAMPLES_PER_READ,), dtype=np.float64)
+        read = daqf.int32()
+        self.ReadAnalogF64(SAMPLES_PER_READ, 10.0, daqc.DAQmx_Val_GroupByChannel,
+                           data, SAMPLES_PER_READ, daqf.byref(read), None)
+        return data
 
-...
+
+```
+## Función para iniciar la captura 
+
+```
+def start_acquisition():
+    global running, data_storage, task
+    data_storage = []
+    running = True
+    task = EMGTask()
+    task.StartTask()
+    threading.Thread(target=acquire_data).start()
 
 
+
+```
+## Adquirir datos en segundo plano 
+```
+def acquire_data():
+    global running, data_storage
+    start_time = time.time()
+    while running and (time.time() - start_time) < DURATION:
+        data = task.read_data()
+        timestamp = time.time()
+        for value in data:
+            data_storage.append((timestamp, value))
+        update_plot(data)
+    task.StopTask()
+    save_data()
+
+```
+## Detener la adquisición 
+```
+def acquire_data():
+    global running, data_storage
+    start_time = time.time()
+    while running and (time.time() - start_time) < DURATION:
+        data = task.read_data()
+        timestamp = time.time()
+        for value in data:
+            data_storage.append((timestamp, value))
+        update_plot(data)
+    task.StopTask()
+    save_data()
+
+```
 ## Análisis de resultados.
 
 Se procesó una señal EMG , obteniendo sus estadísticos descriptivos como la media, desviación estándar y coeficiente de variación, los cuales permitieron describir su comportamiento. El histograma reveló que la señal sigue una distribución normal, mientras que la función de probabilidad mostró cómo se distribuyen los valores de la señal y permitió analizar la probabilidad de encontrar valores en rangos específicos.
