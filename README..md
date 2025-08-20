@@ -436,11 +436,15 @@ Nos muestra a intensidad de contracción muscular.
 ## El coeficiente de variación 
 Nos indica la medida relativa de dispersión y la variabilidad de la señal con su media 
 
+Se imprimen, organizan y oresentan los datos legibles, permitiendo analizar y verificar los metodos utilizados para hallar las medidas estadisticas 
+
 <img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/cce92fbe-a591-4f11-9b49-d93477523aa2" />
 
-
+#HISTOGRAMA SEÑAL EMG MUSCULAR 
 
 <img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/5b1bb158-ddd6-44a7-af81-21c132e47734" />
+
+
 
 <img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/8529d19e-d2ff-48e1-9292-a1d02cc4f7a0" />
 
