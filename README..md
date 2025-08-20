@@ -421,6 +421,25 @@ Con este codigo se imprime los primeros diez valores de cada pico con el fin de 
 ## Grafica de la señal muscular
 <img width="1280" height="632" alt="image" src="https://github.com/user-attachments/assets/736fc70c-f113-4cac-a705-d4fb92f52e4b" />
 
+A partir de la señal capturada del musculo, se realiza un analisis probabilistico de la siguiente manera:
+
+## La media (promedio de la señal)
+Esta nos muestra el valor promedio de las muestras en el tiempo
+Indica el nivel de referencia en el cual oscila la señla 
+En el caso de las señales EMG la media puede encontrarse desplazada debido a offsets eléctricos del sistema de adquisición o a la actividad basal del musculo 
+
+## La desviación estandar
+Esta nos indica que tanta variación tienen los valores respecto a la media 
+En este caso la deviación estandar arrojo que la señal se encuentra muy cerca de la media y ahi muy poco variación.
+Nos muestra a intensidad de contracción muscular.
+
+## El coeficiente de variación 
+Nos indica la medida relativa de dispersión y la variabilidad de la señal con su media 
+
+<img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/cce92fbe-a591-4f11-9b49-d93477523aa2" />
+
+
+
 <img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/5b1bb158-ddd6-44a7-af81-21c132e47734" />
 
 <img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/8529d19e-d2ff-48e1-9292-a1d02cc4f7a0" />
@@ -433,7 +452,7 @@ Con este codigo se imprime los primeros diez valores de cada pico con el fin de 
 
 <img width="1280" height="641" alt="image" src="https://github.com/user-attachments/assets/3ed3ef1d-a97d-4522-95a5-61bf6b31caff" />
 
-<img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/cce92fbe-a591-4f11-9b49-d93477523aa2" />
+
 
 <img width="456" height="92" alt="image" src="https://github.com/user-attachments/assets/00553270-d790-4d2c-a7eb-1d16c35b38ef" />
 
