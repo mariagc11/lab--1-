@@ -386,7 +386,7 @@ def acquire_data():
     save_data()
 
 ```
-## Visualización de iamgen capturada de la señal EMG 
+## Visualización de imagen capturada de la señal EMG 
 Para poder visualizar la captura de la señal EMG se debe adicionar una parte al codigo, teniendo en cuenta que al procesar la señal es necesario importar los datos almacenados en uhn archivo txt. con el fin de que se analizara a información de manera adecuada y garantizar que el formato del archivo no generara errores. 
 
 ```
@@ -421,10 +421,21 @@ Con este codigo se imprime los primeros diez valores de cada pico con el fin de 
 ## Grafica de la señal muscular
 <img width="1280" height="632" alt="image" src="https://github.com/user-attachments/assets/736fc70c-f113-4cac-a705-d4fb92f52e4b" />
 
+<img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/5b1bb158-ddd6-44a7-af81-21c132e47734" />
 
+<img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/8529d19e-d2ff-48e1-9292-a1d02cc4f7a0" />
 
+<img width="1280" height="636" alt="image" src="https://github.com/user-attachments/assets/0cebe6b8-9ba0-4ff8-a8cd-aa293c0cbb90" />
 
+<img width="1280" height="635" alt="image" src="https://github.com/user-attachments/assets/ce4d675d-1508-4b8d-be54-7604106c10ec" />
 
+<img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/fbba72e9-5e58-4b08-9c97-3936ae22445e" />
+
+<img width="1280" height="641" alt="image" src="https://github.com/user-attachments/assets/3ed3ef1d-a97d-4522-95a5-61bf6b31caff" />
+
+<img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/cce92fbe-a591-4f11-9b49-d93477523aa2" />
+
+<img width="456" height="92" alt="image" src="https://github.com/user-attachments/assets/00553270-d790-4d2c-a7eb-1d16c35b38ef" />
 
 ## Análisis de resultados.
 
