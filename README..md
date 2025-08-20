@@ -387,7 +387,7 @@ def acquire_data():
 
 ```
 ## Visualización de imagen capturada de la señal EMG 
-Para poder visualizar la captura de la señal EMG se debe adicionar una parte al codigo, teniendo en cuenta que al procesar la señal es necesario importar los datos almacenados en uhn archivo txt. con el fin de que se analizara a información de manera adecuada y garantizar que el formato del archivo no generara errores. 
+Para poder visualizar la captura de la señal EMG se debe adicionar una parte al codigo, teniendo en cuenta que al procesar la señal es necesario importar los datos almacenados en un archivo txt. con el fin de que se analizara a información de manera adecuada y garantizar que el formato del archivo no generara errores. 
 
 ```
 import numpy as np
