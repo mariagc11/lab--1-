@@ -386,6 +386,43 @@ def acquire_data():
     save_data()
 
 ```
+## Visualización de iamgen capturada de la señal EMG 
+Para poder visualizar la captura de la señal EMG se debe adicionar una parte al codigo, teniendo en cuenta que al procesar la señal es necesario importar los datos almacenados en uhn archivo txt. con el fin de que se analizara a información de manera adecuada y garantizar que el formato del archivo no generara errores. 
+
+```
+import numpy as np
+import csv
+
+ruta = r"C:\Users\majo1\OneDrive\Escritorio\señales\lab señales\lab 1\datos_ecg.txt"
+
+# Detectar delimitador automáticamente
+with open(ruta, 'r') as f:
+    # Lee la primera línea (encabezado)
+    linea = f.readline()
+    dialect = csv.Sniffer().sniff(linea)
+    delimitador = dialect.delimiter
+
+print(f"Delimitador detectado: '{delimitador}'")
+
+# Cargar datos ignorando el encabezado (primera fila)
+data = np.genfromtxt(ruta, delimiter=delimitador, skip_header=1)
+
+# Separar columnas
+tiempo = data[:, 0]   # primera columna
+señal = data[:, 1]    # segunda columna
+
+print("Ejemplo de datos cargados:")
+print("Tiempo:", tiempo[:10])
+print("Señal:", señal[:10])
+
+```
+Con este codigo se imprime los primeros diez valores de cada pico con el fin de verificar que los datos hallan sido cargados correctamente, para el procesamiento y el analisis de la señal.
+
+
+
+
+
+
 ## Análisis de resultados.
 
 Se procesó una señal EMG , obteniendo sus estadísticos descriptivos como la media, desviación estándar y coeficiente de variación, los cuales permitieron describir su comportamiento. El histograma reveló que la señal sigue una distribución normal, mientras que la función de probabilidad mostró cómo se distribuyen los valores de la señal y permitió analizar la probabilidad de encontrar valores en rangos específicos.
