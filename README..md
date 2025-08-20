@@ -418,6 +418,9 @@ print("Señal:", señal[:10])
 ```
 Con este codigo se imprime los primeros diez valores de cada pico con el fin de verificar que los datos hallan sido cargados correctamente, para el procesamiento y el analisis de la señal.
 
+## Grafica de la señal muscular
+<img width="1280" height="632" alt="image" src="https://github.com/user-attachments/assets/736fc70c-f113-4cac-a705-d4fb92f52e4b" />
+
 
 
 
