@@ -440,11 +440,13 @@ Se imprimen, organizan y oresentan los datos legibles, permitiendo analizar y ve
 
 <img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/cce92fbe-a591-4f11-9b49-d93477523aa2" />
 
-#HISTOGRAMA SEÑAL EMG MUSCULAR 
+###HISTOGRAMA SEÑAL EMG MUSCULAR 
+
+La imagen muestra un **histograma de una señal EMG**. Las barras azules representan la distribución de amplitudes, concentradas principalmente alrededor de **1.2**, mientras que la línea negra es una **curva normal** usada como referencia. Se observa que la mayoría de los valores se agrupan en un rango estrecho, con algunos pocos datos atípicos hacia los extremos. Esto indica que la señal tiene una distribución bastante concentrada y cercana a la normalidad, aunque con un pico marcado en el valor central.
 
 <img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/5b1bb158-ddd6-44a7-af81-21c132e47734" />
 
-
+#### Ajuste de una distribución normal (PDF)
 
 <img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/8529d19e-d2ff-48e1-9292-a1d02cc4f7a0" />
 
