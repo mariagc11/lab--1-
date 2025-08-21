@@ -454,12 +454,13 @@ La gráfica muestra la **Función de Probabilidad Acumulada (CDF)** de la señal
 
 ## Graficar señales con ruido en gráficos separados junto con la señal original
 
-### señal con rueido gaussiano
+### señal con ruido gaussiano
 
 La gráfica muestra una **señal EMG comparada con la misma señal al agregarle ruido gaussiano**. La línea negra corresponde a la señal original y la roja, con un área sombreada, a la señal ruidosa con una relación señal/ruido (SNR) de 28 dB. Se observan picos de actividad muscular al inicio (0–3 s), mientras que después de los 5 s la señal se estabiliza alrededor de **1.3 mV**, aunque con pequeñas fluctuaciones generadas por el ruido, lo que ilustra cómo éste afecta la amplitud real sin ocultar la forma general de la señal.
 
 <img width="1280" height="636" alt="image" src="https://github.com/user-attachments/assets/0cebe6b8-9ba0-4ff8-a8cd-aa293c0cbb90" />
-###señal con ruido impulso
+
+### señal con ruido impulso
 
 La gráfica muestra una **señal EMG con ruido de tipo impulso**. La línea negra corresponde a la señal original, mientras que la verde representa la señal afectada por el ruido, con una relación señal/ruido (SNR) de **14.88 dB**. Se observan los picos iniciales de la señal muscular, pero luego aparecen múltiples impulsos que generan oscilaciones rápidas y bruscas alrededor de la señal real. En resumen, aunque la forma general de la EMG aún se distingue, el ruido impulso introduce interferencias notorias que distorsionan la lectura a lo largo del tiempo.
 
