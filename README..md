@@ -446,15 +446,32 @@ La imagen muestra un **histograma de una señal EMG**. Las barras azules represe
 
 <img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/5b1bb158-ddd6-44a7-af81-21c132e47734" />
 
-#### Ajuste de una distribución normal (PDF)
+### Ajuste de una distribución normal (PDF)
+La gráfica muestra la **Función de Probabilidad Acumulada (CDF)** de la señal EMG. Indica que la mayoría de los valores de amplitud se concentran entre **1.2 y 1.3**, donde la probabilidad sube bruscamente de casi 0 a 1. Antes de ese rango casi no hay datos y después prácticamente ya están todos acumulados. En resumen, la señal está fuertemente concentrada en ese intervalo de amplitudes.
 
 <img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/8529d19e-d2ff-48e1-9292-a1d02cc4f7a0" />
 
+
+##Graficar señales con ruido en gráficos separados junto con la señal original
+
+###señal con rueido gaussiano
+
+La gráfica muestra una **señal EMG comparada con la misma señal al agregarle ruido gaussiano**. La línea negra corresponde a la señal original y la roja, con un área sombreada, a la señal ruidosa con una relación señal/ruido (SNR) de 28 dB. Se observan picos de actividad muscular al inicio (0–3 s), mientras que después de los 5 s la señal se estabiliza alrededor de **1.3 mV**, aunque con pequeñas fluctuaciones generadas por el ruido, lo que ilustra cómo éste afecta la amplitud real sin ocultar la forma general de la señal.
+
 <img width="1280" height="636" alt="image" src="https://github.com/user-attachments/assets/0cebe6b8-9ba0-4ff8-a8cd-aa293c0cbb90" />
+###señal con ruido impulso
+
+La gráfica muestra una **señal EMG con ruido de tipo impulso**. La línea negra corresponde a la señal original, mientras que la verde representa la señal afectada por el ruido, con una relación señal/ruido (SNR) de **14.88 dB**. Se observan los picos iniciales de la señal muscular, pero luego aparecen múltiples impulsos que generan oscilaciones rápidas y bruscas alrededor de la señal real. En resumen, aunque la forma general de la EMG aún se distingue, el ruido impulso introduce interferencias notorias que distorsionan la lectura a lo largo del tiempo.
 
 <img width="1280" height="635" alt="image" src="https://github.com/user-attachments/assets/ce4d675d-1508-4b8d-be54-7604106c10ec" />
 
+###señal con ruido artefacto
+
+La gráfica muestra una **señal EMG afectada por ruido de artefacto**. La línea negra corresponde a la señal original, mientras que la amarilla representa la señal con el ruido añadido, con una relación señal/ruido (SNR) de **31.20 dB**, lo que indica que la calidad de la señal sigue siendo bastante buena. Se observan los picos iniciales de actividad muscular y, aunque el ruido introduce pequeñas variaciones en torno a los 1.3 mV, la forma general de la señal se conserva casi intacta. En resumen, el ruido por artefactos está presente pero tiene un impacto bajo en la distorsión de la EMG.
+
+
 <img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/fbba72e9-5e58-4b08-9c97-3936ae22445e" />
+
 
 <img width="1280" height="641" alt="image" src="https://github.com/user-attachments/assets/3ed3ef1d-a97d-4522-95a5-61bf6b31caff" />
 
