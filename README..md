@@ -598,7 +598,9 @@ Es el caso con el SNR más alto de todos, lo que lo hace más manejable.
 
 ✅ Comparación:
 El ruido de artefacto es el menos perjudicial, sobre todo en señales fuertes. Incluso con señales débiles, no destruye totalmente la forma de la señal, lo que lo hace más fácil de corregir con filtros.
+
 ### curtosis 
+
 🔹 1. Señal EMG débil (primera imagen)
 
 Curtosis: 17.90
@@ -628,8 +630,9 @@ La curtosis es aún más alta que en la señal débil, lo que significa que exis
 Aquí, la alta curtosis refleja una señal fisiológica muy estable pero con fuerte concentración en un rango estrecho de amplitudes.
 
 ## Conclusión. 
-El análisis estadístico permitió caracterizar la señal EMG, evidenciando su variabilidad y comportamiento mediante la media, desviación estándar y coeficiente de variación. La distribución aproximadamente normal.
-La introducción de distintos tipos de ruido permitió evaluar su impacto en la calidad de la señal. Esto destaca la importancia del cálculo del SNR como herramienta para medir la degradación de la señal y la necesidad de aplicar filtros adecuados según el tipo de ruido presente
+Al analizar las diferentes señales EMG, se ve claramente la diferencia entre una señal dominada por ruido y una que realmente refleja la contracción del músculo. La primera, de baja amplitud, mostró valores cercanos a cero, mucha variabilidad y poca estabilidad, lo que indica que no aporta información fisiológica relevante. En cambio, la señal de mayor amplitud permitió identificar contracciones sostenidas y organizadas, con un valor medio estable y una variabilidad mucho más controlada, lo que la hace útil para estudiar la actividad muscular de manera confiable.
+
+Además, al incorporar distintos tipos de ruido, se pudo observar cómo cada uno afecta la interpretación de la señal: el ruido gaussiano tiende a difuminarla, el de impulso resulta el más agresivo al generar falsos picos, y el de artefacto es el menos perjudicial, sobre todo cuando la señal es fuerte. En conjunto, todo este análisis demuestra que la calidad de la señal y la relación señal/ruido son claves para poder trabajar con registros de EMG, ya sea con fines clínicos, de investigación o en el desarrollo de tecnologías como los exoesqueletos.
 
 ## Referencias:
 - Procesando señales electrofisiológicas usando Python - YouTube. (2020, 17 de diciembre) — PyDay Chile 2020 Procesando señales electrofisiológicas usando Python. Faviconyoutube.com
