@@ -493,7 +493,7 @@ La gráfica muestra la **distribución de amplitudes de una señal EMG con anál
 
 ## Análisis de resultados.
 
-### señales originales 
+### Señales originales 
 
 <img width="1404" height="702" alt="image" src="https://github.com/user-attachments/assets/8e03eaa5-aafc-47b4-aeea-cb064d12e0fb" />
 <img width="1280" height="632" alt="image" src="https://github.com/user-attachments/assets/51698c38-a229-47c6-8b2c-dae6b11eea9f" />
@@ -502,7 +502,8 @@ La gráfica muestra la **distribución de amplitudes de una señal EMG con anál
 
 * La segunda señal muestra una contracción muscular clara, con picos iniciales fuertes y luego un mantenimiento estable, lo cual indica que el músculo fue activado de manera sostenida.
 
-### calculos.
+### Calculos
+
 <img width="426" height="205" alt="image" src="https://github.com/user-attachments/assets/4161fdb3-05e8-457a-a886-5fed7487505f" />
 <img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/dc0092d2-8f53-4b23-847d-077f96ba5124" />
 
@@ -512,7 +513,7 @@ La gráfica muestra la **distribución de amplitudes de una señal EMG con anál
 
 * En términos prácticos, los cálculos estadísticos muestran por qué la segunda señal es mucho más útil: tiene una media significativa y un coeficiente de variación bajo, lo que respalda su estabilidad.
 
-### histograma.
+### Histograma.
 
 <img width="1438" height="717" alt="image" src="https://github.com/user-attachments/assets/ac2a858e-54d6-4c04-8e6e-2c8fff266e60" />
 <img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/8e842cd3-b16e-4734-a2e0-29c4fd2ceb8d" />
@@ -537,8 +538,9 @@ La gráfica muestra la **distribución de amplitudes de una señal EMG con anál
 * Señal 1 = actividad basal/ruido
 
 * Señal 2 = contracción real, estable y útil para análisis clínico o biomecánico.
-* 
-### señal-ruido (SNR)
+
+  
+### Señal-ruido (SNR)
 
 🔴 1. Ruido Gaussiano
 
@@ -561,6 +563,8 @@ El ruido gaussiano afecta de manera crítica a señales de baja amplitud, donde 
 Se procesó una señal EMG , obteniendo sus estadísticos descriptivos como la media, desviación estándar y coeficiente de variación, los cuales permitieron describir su comportamiento. El histograma reveló que la señal sigue una distribución normal, mientras que la función de probabilidad mostró cómo se distribuyen los valores de la señal y permitió analizar la probabilidad de encontrar valores en rangos específicos.
 Posteriormente, se añadió ruido gaussiano, de impulso y tipo artefacto, evaluando su alteración mediante el cálculo del SNR.
 
+
+
 🟢 2. Ruido de Impulso
 
 * Primera señal (débil, SNR = -2.78 dB):
@@ -579,6 +583,8 @@ Aunque el SNR es positivo, el ruido de impulso sigue siendo molesto porque se co
 
 ✅ Comparación:
 El ruido de impulso es el más invasivo de todos: en señales débiles destruye la información, y en señales fuertes genera falsos positivos que complican el análisis.
+
+
 
 🟡 3. Ruido de Artefacto
 
@@ -599,7 +605,9 @@ Es el caso con el SNR más alto de todos, lo que lo hace más manejable.
 ✅ Comparación:
 El ruido de artefacto es el menos perjudicial, sobre todo en señales fuertes. Incluso con señales débiles, no destruye totalmente la forma de la señal, lo que lo hace más fácil de corregir con filtros.
 
+
 ### curtosis 
+
 
 🔹 1. Señal EMG débil (primera imagen)
 
@@ -614,6 +622,7 @@ La distribución de amplitudes está fuertemente concentrada alrededor de 0 mV, 
 Una curtosis tan alta indica que hay una gran aglomeración de valores cerca de la media, pero con colas largas (valores extremos ocasionales).
 
 Esto concuerda con una señal dominada por ruido, donde la mayor parte del tiempo no hay actividad muscular significativa, pero aparecen picos pequeños que generan colas largas en la distribución.
+
 
 🔹 2. Señal EMG fuerte (segunda imagen)
 
@@ -630,11 +639,13 @@ La curtosis es aún más alta que en la señal débil, lo que significa que exis
 Aquí, la alta curtosis refleja una señal fisiológica muy estable pero con fuerte concentración en un rango estrecho de amplitudes.
 
 ## Conclusión. 
+
 Al analizar las diferentes señales EMG, se ve claramente la diferencia entre una señal dominada por ruido y una que realmente refleja la contracción del músculo. La primera, de baja amplitud, mostró valores cercanos a cero, mucha variabilidad y poca estabilidad, lo que indica que no aporta información fisiológica relevante. En cambio, la señal de mayor amplitud permitió identificar contracciones sostenidas y organizadas, con un valor medio estable y una variabilidad mucho más controlada, lo que la hace útil para estudiar la actividad muscular de manera confiable.
 
 Además, al incorporar distintos tipos de ruido, se pudo observar cómo cada uno afecta la interpretación de la señal: el ruido gaussiano tiende a difuminarla, el de impulso resulta el más agresivo al generar falsos picos, y el de artefacto es el menos perjudicial, sobre todo cuando la señal es fuerte. En conjunto, todo este análisis demuestra que la calidad de la señal y la relación señal/ruido son claves para poder trabajar con registros de EMG, ya sea con fines clínicos, de investigación o en el desarrollo de tecnologías como los exoesqueletos.
 
-## Referencias:
+## Referencias
+
 - Procesando señales electrofisiológicas usando Python - YouTube. (2020, 17 de diciembre) — PyDay Chile 2020 Procesando señales electrofisiológicas usando Python. Faviconyoutube.com
 - What is Signal to Noise Ratio and How to calculate it? (2024, 17 julio). Advanced PCB Design Blog | Cadence. https://resources-pcb-cadence-com.translate.goog/blog/2020-what-is-signal-to-noise-ratio-and-how-to-calculate-it?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
 - Goyal B, Dogra A, Agrawal S, Sohi BS Problemas de ruido que prevalecen en varios tipos de imágenes médicas. Biomed Pharmacol J 2018;11(3). Disponible en: http://biomedpharmajournal.org/?p=22526
