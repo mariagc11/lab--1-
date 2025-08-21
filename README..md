@@ -492,7 +492,6 @@ La gráfica muestra la **distribución de amplitudes de una señal EMG con anál
 <img width="1280" height="641" alt="image" src="https://github.com/user-attachments/assets/3ed3ef1d-a97d-4522-95a5-61bf6b31caff" />
 
 ## Análisis de resultados.
-### comparacion resultados.
 
 ### señales originales 
 
