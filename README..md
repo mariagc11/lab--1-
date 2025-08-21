@@ -473,7 +473,8 @@ La gráfica muestra una **señal EMG afectada por ruido de artefacto**. La líne
 
 <img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/fbba72e9-5e58-4b08-9c97-3936ae22445e" />
 
-### SNR 
+## SNR 
+
 La imagen muestra los resultados de la **Relación Señal-Ruido (SNR)** para distintos tipos de ruido aplicados a la señal EMG:
 
 * **Ruido gaussiano:** SNR de **28.14 dB**, lo que indica que la señal mantiene buena calidad a pesar del ruido.
