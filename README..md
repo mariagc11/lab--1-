@@ -424,19 +424,19 @@ Con este codigo se imprime los primeros diez valores de cada pico con el fin de 
 A partir de la señal capturada del musculo, se realiza un analisis probabilistico de la siguiente manera:
 
 ## La media (promedio de la señal)
-Esta nos muestra el valor promedio de las muestras en el tiempo
-Indica el nivel de referencia en el cual oscila la señla 
-En el caso de las señales EMG la media puede encontrarse desplazada debido a offsets eléctricos del sistema de adquisición o a la actividad basal del musculo 
+Esta nos muestra el valor promedio de las muestras en el tiempo.
+Indica el nivel de referencia en el cual oscila la señal.
+En el caso de las señales EMG la media puede encontrarse desplazada debido a offsets eléctricos del sistema de adquisición o a la actividad basal del musculo.
 
 ## La desviación estandar
-Esta nos indica que tanta variación tienen los valores respecto a la media 
-En este caso la deviación estandar arrojo que la señal se encuentra muy cerca de la media y ahi muy poco variación.
+Esta nos indica que tanta variación tienen los valores respecto a la media.
+En este caso la desviación estandar arrojo que la señal se encuentra muy cerca de la media y ahi muy poca variación.
 Nos muestra a intensidad de contracción muscular.
 
 ## El coeficiente de variación 
-Nos indica la medida relativa de dispersión y la variabilidad de la señal con su media 
+Nos indica la medida relativa de dispersión y la variabilidad de la señal con su media.
 
-Se imprimen, organizan y oresentan los datos legibles, permitiendo analizar y verificar los metodos utilizados para hallar las medidas estadisticas 
+Se imprimen, organizan y presentan los datos legibles, permitiendo analizar y verificar los métodos utilizados para hallar las medidas estadisticas 
 
 <img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/cce92fbe-a591-4f11-9b49-d93477523aa2" />
 
@@ -451,16 +451,15 @@ La gráfica muestra la **Función de Probabilidad Acumulada (CDF)** de la señal
 
 <img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/8529d19e-d2ff-48e1-9292-a1d02cc4f7a0" />
 
+## Graficas señales con ruido en gráficos separados junto con la señal original
 
-## Graficar señales con ruido en gráficos separados junto con la señal original
-
-### señal con ruido gaussiano
+### Señal con ruido gaussiano
 
 La gráfica muestra una **señal EMG comparada con la misma señal al agregarle ruido gaussiano**. La línea negra corresponde a la señal original y la roja, con un área sombreada, a la señal ruidosa con una relación señal/ruido (SNR) de 28 dB. Se observan picos de actividad muscular al inicio (0–3 s), mientras que después de los 5 s la señal se estabiliza alrededor de **1.3 mV**, aunque con pequeñas fluctuaciones generadas por el ruido, lo que ilustra cómo éste afecta la amplitud real sin ocultar la forma general de la señal.
 
 <img width="1280" height="636" alt="image" src="https://github.com/user-attachments/assets/0cebe6b8-9ba0-4ff8-a8cd-aa293c0cbb90" />
 
-### señal con ruido impulso
+### Señal con ruido impulso
 
 La gráfica muestra una **señal EMG con ruido de tipo impulso**. La línea negra corresponde a la señal original, mientras que la verde representa la señal afectada por el ruido, con una relación señal/ruido (SNR) de **14.88 dB**. Se observan los picos iniciales de la señal muscular, pero luego aparecen múltiples impulsos que generan oscilaciones rápidas y bruscas alrededor de la señal real. En resumen, aunque la forma general de la EMG aún se distingue, el ruido impulso introduce interferencias notorias que distorsionan la lectura a lo largo del tiempo.
 
