@@ -440,7 +440,7 @@ Se imprimen, organizan y oresentan los datos legibles, permitiendo analizar y ve
 
 <img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/cce92fbe-a591-4f11-9b49-d93477523aa2" />
 
-###HISTOGRAMA SEÑAL EMG MUSCULAR 
+### HISTOGRAMA SEÑAL EMG MUSCULAR 
 
 La imagen muestra un **histograma de una señal EMG**. Las barras azules representan la distribución de amplitudes, concentradas principalmente alrededor de **1.2**, mientras que la línea negra es una **curva normal** usada como referencia. Se observa que la mayoría de los valores se agrupan en un rango estrecho, con algunos pocos datos atípicos hacia los extremos. Esto indica que la señal tiene una distribución bastante concentrada y cercana a la normalidad, aunque con un pico marcado en el valor central.
 
@@ -452,9 +452,9 @@ La gráfica muestra la **Función de Probabilidad Acumulada (CDF)** de la señal
 <img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/8529d19e-d2ff-48e1-9292-a1d02cc4f7a0" />
 
 
-##Graficar señales con ruido en gráficos separados junto con la señal original
+## Graficar señales con ruido en gráficos separados junto con la señal original
 
-###señal con rueido gaussiano
+### señal con rueido gaussiano
 
 La gráfica muestra una **señal EMG comparada con la misma señal al agregarle ruido gaussiano**. La línea negra corresponde a la señal original y la roja, con un área sombreada, a la señal ruidosa con una relación señal/ruido (SNR) de 28 dB. Se observan picos de actividad muscular al inicio (0–3 s), mientras que después de los 5 s la señal se estabiliza alrededor de **1.3 mV**, aunque con pequeñas fluctuaciones generadas por el ruido, lo que ilustra cómo éste afecta la amplitud real sin ocultar la forma general de la señal.
 
@@ -465,15 +465,27 @@ La gráfica muestra una **señal EMG con ruido de tipo impulso**. La línea negr
 
 <img width="1280" height="635" alt="image" src="https://github.com/user-attachments/assets/ce4d675d-1508-4b8d-be54-7604106c10ec" />
 
-###señal con ruido artefacto
+### señal con ruido artefacto
 
 La gráfica muestra una **señal EMG afectada por ruido de artefacto**. La línea negra corresponde a la señal original, mientras que la amarilla representa la señal con el ruido añadido, con una relación señal/ruido (SNR) de **31.20 dB**, lo que indica que la calidad de la señal sigue siendo bastante buena. Se observan los picos iniciales de actividad muscular y, aunque el ruido introduce pequeñas variaciones en torno a los 1.3 mV, la forma general de la señal se conserva casi intacta. En resumen, el ruido por artefactos está presente pero tiene un impacto bajo en la distorsión de la EMG.
 
 
 <img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/fbba72e9-5e58-4b08-9c97-3936ae22445e" />
 
+## curtosis
+
+La gráfica muestra la **distribución de amplitudes de una señal EMG con análisis de curtosis**. El histograma (barras azules) concentra la mayoría de los valores alrededor de **1.3 mV**, mientras que la línea negra representa una distribución normal ajustada como referencia. El valor de **curtosis excesiva (20.21)** indica que la señal tiene una distribución muy **picuda y con colas pesadas**, es decir, los datos se concentran fuertemente en torno a un valor central pero con la presencia de valores extremos. En resumen, la señal EMG presenta una alta curtosis, lo que refleja gran concentración en un rango estrecho de amplitudes y la existencia de picos atípicos.
 
 <img width="1280" height="641" alt="image" src="https://github.com/user-attachments/assets/3ed3ef1d-a97d-4522-95a5-61bf6b31caff" />
+
+### SNR 
+La imagen muestra los resultados de la **Relación Señal-Ruido (SNR)** para distintos tipos de ruido aplicados a la señal EMG:
+
+* **Ruido gaussiano:** SNR de **28.14 dB**, lo que indica que la señal mantiene buena calidad a pesar del ruido.
+* **Ruido impulso:** SNR de **14.88 dB**, representando la condición más crítica, ya que este tipo de ruido degrada notablemente la señal.
+* **Ruido artefacto:** SNR de **31.20 dB**, el más alto de los tres, lo que significa que el ruido apenas afecta la forma original de la señal.
+
+En resumen, la señal EMG es más resistente al ruido de artefacto y al gaussiano, pero se ve considerablemente afectada por el ruido de impulso.
 
 
 
