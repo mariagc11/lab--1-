@@ -473,30 +473,159 @@ La gráfica muestra una **señal EMG afectada por ruido de artefacto**. La líne
 
 <img width="1280" height="640" alt="image" src="https://github.com/user-attachments/assets/fbba72e9-5e58-4b08-9c97-3936ae22445e" />
 
-## curtosis
-
-La gráfica muestra la **distribución de amplitudes de una señal EMG con análisis de curtosis**. El histograma (barras azules) concentra la mayoría de los valores alrededor de **1.3 mV**, mientras que la línea negra representa una distribución normal ajustada como referencia. El valor de **curtosis excesiva (20.21)** indica que la señal tiene una distribución muy **picuda y con colas pesadas**, es decir, los datos se concentran fuertemente en torno a un valor central pero con la presencia de valores extremos. En resumen, la señal EMG presenta una alta curtosis, lo que refleja gran concentración en un rango estrecho de amplitudes y la existencia de picos atípicos.
-
-<img width="1280" height="641" alt="image" src="https://github.com/user-attachments/assets/3ed3ef1d-a97d-4522-95a5-61bf6b31caff" />
-
 ### SNR 
 La imagen muestra los resultados de la **Relación Señal-Ruido (SNR)** para distintos tipos de ruido aplicados a la señal EMG:
 
 * **Ruido gaussiano:** SNR de **28.14 dB**, lo que indica que la señal mantiene buena calidad a pesar del ruido.
 * **Ruido impulso:** SNR de **14.88 dB**, representando la condición más crítica, ya que este tipo de ruido degrada notablemente la señal.
 * **Ruido artefacto:** SNR de **31.20 dB**, el más alto de los tres, lo que significa que el ruido apenas afecta la forma original de la señal.
-
-En resumen, la señal EMG es más resistente al ruido de artefacto y al gaussiano, pero se ve considerablemente afectada por el ruido de impulso.
-
-
+  
+La señal EMG es más resistente al ruido de artefacto y al gaussiano, pero se ve considerablemente afectada por el ruido de impulso.
 
 <img width="456" height="92" alt="image" src="https://github.com/user-attachments/assets/00553270-d790-4d2c-a7eb-1d16c35b38ef" />
 
-## Análisis de resultados.
+## curtosis
 
+La gráfica muestra la **distribución de amplitudes de una señal EMG con análisis de curtosis**. El histograma (barras azules) concentra la mayoría de los valores alrededor de **1.3 mV**, mientras que la línea negra representa una distribución normal ajustada como referencia. El valor de **curtosis excesiva (20.21)** indica que la señal tiene una distribución muy **picuda y con colas pesadas**, es decir, los datos se concentran fuertemente en torno a un valor central pero con la presencia de valores extremos. En resumen, la señal EMG presenta una alta curtosis, lo que refleja gran concentración en un rango estrecho de amplitudes y la existencia de picos atípicos.
+
+<img width="1280" height="641" alt="image" src="https://github.com/user-attachments/assets/3ed3ef1d-a97d-4522-95a5-61bf6b31caff" />
+
+## Análisis de resultados.
+### comparacion resultados.
+
+### señales originales 
+
+<img width="1404" height="702" alt="image" src="https://github.com/user-attachments/assets/8e03eaa5-aafc-47b4-aeea-cb064d12e0fb" />
+<img width="1280" height="632" alt="image" src="https://github.com/user-attachments/assets/51698c38-a229-47c6-8b2c-dae6b11eea9f" />
+
+* La primera señal refleja un registro con baja intensidad y ruido, posiblemente sin contracción muscular voluntaria significativa.
+
+* La segunda señal muestra una contracción muscular clara, con picos iniciales fuertes y luego un mantenimiento estable, lo cual indica que el músculo fue activado de manera sostenida.
+
+### calculos.
+<img width="426" height="205" alt="image" src="https://github.com/user-attachments/assets/4161fdb3-05e8-457a-a886-5fed7487505f" />
+<img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/dc0092d2-8f53-4b23-847d-077f96ba5124" />
+
+* La primera señal representa más ruido que actividad muscular real, con un nivel de variabilidad tan alto que los datos no son confiables para análisis clínico o biomecánico.
+
+* La segunda señal refleja una contracción muscular fisiológica clara y estable, con un nivel de variación aceptable que sí permite hacer estudios de fuerza, fatiga o control de exoesqueletos.
+
+* En términos prácticos, los cálculos estadísticos muestran por qué la segunda señal es mucho más útil: tiene una media significativa y un coeficiente de variación bajo, lo que respalda su estabilidad.
+
+### histograma.
+
+<img width="1438" height="717" alt="image" src="https://github.com/user-attachments/assets/ac2a858e-54d6-4c04-8e6e-2c8fff266e60" />
+<img width="1280" height="617" alt="image" src="https://github.com/user-attachments/assets/8e842cd3-b16e-4734-a2e0-29c4fd2ceb8d" />
+
+* El primer histograma representa una señal con comportamiento caótico y amplitud muy baja, sin valor fisiológico significativo.
+
+* El segundo histograma refleja un patrón real de actividad muscular sostenida, donde la mayoría de los datos se agrupan alrededor de un valor medio estable.
+
+* En términos de análisis EMG, el histograma 2 permite estudiar fuerza, fatiga o control muscular, mientras que el histograma 1 es más representativo de ruido y microfluctuaciones.
+
+### Función de probabilidad acumulativa.
+
+<img width="1191" height="708" alt="image" src="https://github.com/user-attachments/assets/7164c331-27ff-4460-b565-0eb5488dc531" />
+<img width="1214" height="723" alt="image" src="https://github.com/user-attachments/assets/2a0ba9b7-919a-4e2e-927e-09f8a5d4d13e" />
+
+* La primera CDF muestra que casi toda la probabilidad acumulada está en torno a valores muy pequeños → ruido sin relevancia fisiológica.
+
+* La segunda CDF concentra su probabilidad acumulada en valores mucho más altos (≈1.2 mV), lo que corresponde a una contracción muscular clara y estable.
+
+* En conjunto con los histogramas y los estadísticos, queda confirmado que:
+
+* Señal 1 = actividad basal/ruido
+
+* Señal 2 = contracción real, estable y útil para análisis clínico o biomecánico.
+* 
+### señal-ruido (SNR)
+
+🔴 1. Ruido Gaussiano
+
+* Primera señal (débil, SNR = -1.02 dB):
+
+El ruido gaussiano es tan fuerte que casi se superpone con la señal.
+
+La señal original (picos pequeños, <0.5 mV) se ve prácticamente oculta.
+
+El SNR negativo significa que el ruido domina sobre la señal.
+
+* Segunda señal (fuerte, SNR = 28.14 dB):
+
+Aunque hay ruido, la señal muscular (picos de 2 mV y contracción sostenida en 1.2 mV) se mantiene clara.
+
+El SNR alto permite diferenciar muy bien la señal de fondo del ruido.
+
+✅ Comparación:
+El ruido gaussiano afecta de manera crítica a señales de baja amplitud, donde se confunde con la actividad muscular. En cambio, en señales de alta amplitud es mucho menos invasivo y se puede filtrar, ya que la contracción sigue siendo visible.
 Se procesó una señal EMG , obteniendo sus estadísticos descriptivos como la media, desviación estándar y coeficiente de variación, los cuales permitieron describir su comportamiento. El histograma reveló que la señal sigue una distribución normal, mientras que la función de probabilidad mostró cómo se distribuyen los valores de la señal y permitió analizar la probabilidad de encontrar valores en rangos específicos.
 Posteriormente, se añadió ruido gaussiano, de impulso y tipo artefacto, evaluando su alteración mediante el cálculo del SNR.
 
+🟢 2. Ruido de Impulso
+
+* Primera señal (débil, SNR = -2.78 dB):
+
+Los picos de ruido de impulso superan la señal original.
+
+La actividad muscular queda totalmente oculta entre los impulsos aleatorios.
+
+El SNR negativo confirma que no es posible diferenciar señal de ruido.
+
+* Segunda señal (fuerte, SNR = 14.88 dB):
+
+Se distingue la contracción sostenida alrededor de 1.2 mV, pero con picos abruptos falsos (saltos >2 mV).
+
+Aunque el SNR es positivo, el ruido de impulso sigue siendo molesto porque se confunde con picos musculares reales.
+
+✅ Comparación:
+El ruido de impulso es el más invasivo de todos: en señales débiles destruye la información, y en señales fuertes genera falsos positivos que complican el análisis.
+
+🟡 3. Ruido de Artefacto
+
+* Primera señal (débil, SNR = 1.96 dB):
+
+Los artefactos producen una oscilación adicional sobre la señal pequeña.
+
+Aunque hay distorsión, la forma de la señal original se intuye en segundo plano.
+
+* Segunda señal (fuerte, SNR = 31.20 dB):
+
+La señal muscular permanece clara y estable.
+
+Los artefactos añaden pequeñas variaciones, pero no destruyen la información útil.
+
+Es el caso con el SNR más alto de todos, lo que lo hace más manejable.
+
+✅ Comparación:
+El ruido de artefacto es el menos perjudicial, sobre todo en señales fuertes. Incluso con señales débiles, no destruye totalmente la forma de la señal, lo que lo hace más fácil de corregir con filtros.
+### curtosis 
+🔹 1. Señal EMG débil (primera imagen)
+
+Curtosis: 17.90
+
+Curtosis excesiva: 14.90
+
+Interpretación:
+
+La distribución de amplitudes está fuertemente concentrada alrededor de 0 mV, con picos muy marcados.
+
+Una curtosis tan alta indica que hay una gran aglomeración de valores cerca de la media, pero con colas largas (valores extremos ocasionales).
+
+Esto concuerda con una señal dominada por ruido, donde la mayor parte del tiempo no hay actividad muscular significativa, pero aparecen picos pequeños que generan colas largas en la distribución.
+
+🔹 2. Señal EMG fuerte (segunda imagen)
+
+Curtosis: 23.21
+
+Curtosis excesiva: 20.21
+
+Interpretación:
+
+La distribución está centrada alrededor de 1.2–1.3 mV, con valores muy concentrados en torno a esa amplitud.
+
+La curtosis es aún más alta que en la señal débil, lo que significa que existe una gran concentración de valores en torno al nivel de contracción sostenida, con algunos valores atípicos (picos iniciales de activación).
+
+Aquí, la alta curtosis refleja una señal fisiológica muy estable pero con fuerte concentración en un rango estrecho de amplitudes.
 
 ## Conclusión. 
 El análisis estadístico permitió caracterizar la señal EMG, evidenciando su variabilidad y comportamiento mediante la media, desviación estándar y coeficiente de variación. La distribución aproximadamente normal.
