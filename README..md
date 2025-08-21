@@ -505,6 +505,7 @@ La gráfica muestra la **distribución de amplitudes de una señal EMG con anál
 
 <img width="426" height="205" alt="image" src="https://github.com/user-attachments/assets/4161fdb3-05e8-457a-a886-5fed7487505f" />
 <img width="412" height="213" alt="image" src="https://github.com/user-attachments/assets/dc0092d2-8f53-4b23-847d-077f96ba5124" />
+
 * La primera señal muscular se encuentra en un rango de los 8 s, observando que tiene variaciones con altas frecuencias con amplitud pequeña (-0.2 y 0.5 mV).
 * Tiene un aspecto de señal en crudo (sin procesar demasiado), con bastante ruido y oscilaciones rapidas.
 * Despues de los 6s se observan picos con alta actividad, lo que puede indicar alta concentración muscular. 
@@ -514,7 +515,7 @@ La gráfica muestra la **distribución de amplitudes de una señal EMG con anál
 *Entre 1.2 - 1.3 mV se comienza a estabilizar la señal y a volver más continua con pocas variaciones bruscas.
 * La segunda señal refleja una contracción muscular fisiológica clara y estable, con un nivel de variación aceptable que sí permite hacer estudios de fuerza, fatiga o control de exoesqueletos.
 
-Respecto a la amplitud la primera señal contiene una anplitud muy baja <0.5mv, esto se debe alguna atenuación, retificación o contracción debil y la segunda señal tiene una ampliación mucho mayor >2mV en los picos, esto indica contracciones mas fuertes. 
+Respecto a la amplitud la segunda señal contiene una anplitud muy baja <0.5mv, esto se debe alguna atenuación, retificación o contracción debil y la primera señal tiene una ampliación mucho mayor >2mV en los picos, esto indica contracciones mas fuertes. 
 
 * En términos prácticos, los cálculos estadísticos muestran por qué la segunda señal es mucho más útil: tiene una media significativa y un coeficiente de variación bajo, lo que respalda su estabilidad.
 
