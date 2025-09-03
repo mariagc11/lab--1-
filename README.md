@@ -13,6 +13,9 @@ La convolución es una operación matemática fundamental en el análisis de sis
 
 La definición discreta de la convolución 
 
-<img width="476" height="99" alt="image" src="https://github.com/user-attachments/assets/d30f9505-1033-466a-9e1d-95860d5504e0" />
+<img width="424" height="93" alt="image" src="https://github.com/user-attachments/assets/223c6ebd-c2e6-4cb5-ba6a-5cee8ee7e51f" />
+Cada muestra de la entrada multiplica la respuesta al impulso y la desplaza en el tiempo.
+
+
 
 
