@@ -1,1 +1,233 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import wfdb
+import scipy.signal as signal
+import os
+# Gime
+h_gaby = np.array([5, 6, 0, 0, 8, 7, 7])  # Sistema h[n]
+x_gaby = np.array([1, 0, 0, 0, 8, 1, 0, 4, 5, 6])  # Señal x[n]
 
+# María José
+h_maria = np.array([1, 0, 1, 9, 6, 0, 2, 1, 4, 8])
+x_maria = np.array([5, 6, 0, 0, 4, 3, 5 ])
+
+# martin
+h_martin = np.array([1, 0, 1, 6, 5, 9, 2, 6, 7, 7])
+x_martin = np.array([5, 6, 0, 0, 5, 1, 1])
+
+# Función para calcular la convolución
+def calcular_convolucion(h, x):
+    return np.convolve(h, x, mode='full')
+
+# Cálculo de la convolución para cada persona
+y_gaby = calcular_convolucion(h_gaby, x_gaby)
+y_maria = calcular_convolucion(h_maria, x_maria)
+y_martin = calcular_convolucion(h_martin, x_martin)
+
+# Graficamos las convoluciones
+plt.figure(figsize=(12, 6))
+
+plt.subplot(3, 1, 1)
+plt.stem(y_gaby, linefmt='y-', markerfmt='yo', basefmt='k-')
+plt.title("Convolución de Gaby")
+plt.xlabel("n")
+plt.ylabel("y[n]")
+
+plt.subplot(3, 1, 2)
+plt.stem(y_maria, linefmt='r-', markerfmt='ro', basefmt='k-')
+plt.title("Convolución de María José")
+plt.xlabel("n")
+plt.ylabel("y[n]")
+
+plt.subplot(3, 1, 3)
+plt.stem(y_martin, linefmt='g-', markerfmt='go', basefmt='k-')
+plt.title("Convolución de martin")
+plt.xlabel("n")
+plt.ylabel("y[n]")
+
+plt.tight_layout()
+plt.show()
+
+# ------------------------------------
+# PARTE B: CÁLCULO DE CORRELACIÓN
+# ------------------------------------
+
+# Parámetros para la correlación
+Ts = 1.25e-3  # Tiempo de muestreo en segundos
+n = np.arange(9)  # Nueve muestras según el documento
+f = 100  # Frecuencia en Hz
+
+# Definición de las señales
+x1 = np.cos(2 * np.pi * f * n * Ts)  # Señal x1[n]
+x2 = np.sin(2 * np.pi * f * n * Ts)  # Señal x2[n]
+
+# Cálculo de la correlación cruzada entre ambas señales
+correlacion = np.correlate(x1, x2, mode='full')
+
+# Gráfico de la correlación cruzada
+plt.figure(figsize=(8, 4))
+plt.stem(np.arange(-len(x1)+1, len(x1)), correlacion, linefmt='b-', markerfmt='bo', basefmt='k-')
+plt.title("Correlación cruzada entre x1[n] y x2[n]")
+plt.xlabel("Desplazamiento (n)")
+plt.ylabel("Correlación")
+plt.grid(True)
+plt.show()
+
+#SEGUNDO PUNTOimport numpy as np
+
+
+# Definir la ruta local
+record_name = "a01"  # Nombre del archivo sin extensión
+record_path = r"C:\Users\majo1\OneDrive\Escritorio\señales\lab señales\lab 2"
+
+# Cargar la señal ECG desde archivos locales
+record = wfdb.rdrecord(os.path.join(record_path, record_name))
+annotation = wfdb.rdann(os.path.join(record_path, record_name), "apn")
+
+# Extraer la señal y la frecuencia de muestreo
+signal_data = record.p_signal[:, 0]  # Primer canal (ECG)
+sampling_rate = record.fs  # Frecuencia de muestreo
+
+# Tiempo en segundos
+time = np.arange(len(signal_data)) / sampling_rate
+
+# Estadísticas descriptivas
+time_mean = np.mean(signal_data)
+time_median = np.median(signal_data)
+time_std = np.std(signal_data)
+time_max = np.max(signal_data)
+time_min = np.min(signal_data)
+
+print("Estadísticas en el dominio del tiempo:")
+print(f"Media: {time_mean}")
+print(f"Mediana: {time_median}")
+print(f"Desviación estándar: {time_std}")
+print(f"Máximo: {time_max}")
+print(f"Mínimo: {time_min}")
+
+# Graficar la señal en el dominio del tiempo
+plt.figure(figsize=(10, 4))
+plt.plot(time, signal_data, label="ECG")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.title("Señal ECG en el dominio del tiempo")
+plt.legend()
+plt.show()
+
+# Transformada de Fourier y Densidad Espectral
+freqs = np.fft.rfftfreq(len(signal_data), d=1/sampling_rate)
+fft_values = np.fft.rfft(signal_data)
+power_spectrum = np.abs(fft_values) ** 2
+
+# Graficar la transformada de Fourier
+plt.figure(figsize=(10, 4))
+plt.plot(freqs, np.abs(fft_values))
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Magnitud")
+plt.title("Transformada de Fourier de la señal ECG")
+plt.grid()
+plt.show()
+
+# Graficar la densidad espectral de potencia
+plt.figure(figsize=(10, 4))
+plt.plot(freqs, power_spectrum)
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Densidad de Potencia")
+plt.title("Densidad espectral de la señal ECG")
+plt.grid()
+plt.show()
+
+# Cálculo de estadísticas en el dominio de la frecuencia
+freq_mean = np.sum(freqs * power_spectrum) / np.sum(power_spectrum)
+freq_median = freqs[np.argsort(power_spectrum)[len(power_spectrum)//2]]
+freq_std = np.sqrt(np.sum((freqs - freq_mean)**2 * power_spectrum) / np.sum(power_spectrum))
+
+print("Estadísticas en el dominio de la frecuencia:")
+print(f"Frecuencia media: {freq_mean}")
+print(f"Frecuencia mediana: {freq_median}")
+print(f"Desviación estándar de la frecuencia: {freq_std}")
+
+# Histograma de frecuencias
+plt.figure(figsize=(10, 4))
+plt.hist(freqs, bins=50, weights=power_spectrum)
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Potencia")
+plt.title("Histograma de frecuencias de la señal ECG")
+plt.grid()
+plt.show()
+
+# --- PEARSON PARA LA SEÑAL ECG ---
+
+# 1) Pearson entre señal original y reconstruida (IFFT)
+signal_reconstructed = np.fft.irfft(fft_values, n=len(signal_data))
+pearson_ecg_ifft = np.corrcoef(signal_data, signal_reconstructed)[0, 1]
+print(f"Pearson ECG original vs IFFT: {pearson_ecg_ifft:.6f}")
+
+# 2) Pearson entre señal original y señal filtrada (0.5–40 Hz)
+def bandpass(signal_in, fs, lowcut=0.5, highcut=40.0, order=4):
+    nyq = 0.5 * fs
+    b, a = signal.butter(order, [lowcut/nyq, highcut/nyq], btype='band')
+    return signal.filtfilt(b, a, signal_in)
+
+ecg_filtered = bandpass(signal_data, sampling_rate, 0.5, 40.0, order=4)
+pearson_ecg_filtered = np.corrcoef(signal_data, ecg_filtered)[0, 1]
+print(f"Pearson ECG original vs filtrada (0.5–40 Hz): {pearson_ecg_filtered:.6f}")
+
+# 3) (Opcional) Pearson por desfase: original vs. versión desplazada k muestras
+def pearson_lag(x, y, lag=0):
+    if lag > 0:
+        return np.corrcoef(x[lag:], y[:-lag])[0, 1]
+    elif lag < 0:
+        lag = -lag
+        return np.corrcoef(x[:-lag], y[lag:])[0, 1]
+    else:
+        return np.corrcoef(x, y)[0, 1]
+
+# ejemplo: evaluar lags cercanos al latido (p.ej., ±50 muestras)
+lags = np.arange(-50, 51)
+pearson_vs_lag = [pearson_lag(signal_data, ecg_filtered, lag=int(k)) for k in lags]
+best_idx = int(np.nanargmax(pearson_vs_lag))
+print(f"Máximo Pearson vs filtrada ocurre en lag={lags[best_idx]} muestras, r={pearson_vs_lag[best_idx]:.6f}")
+# ------------------------------
+# GRAFICAR RESULTADOS DE PEARSON
+# ------------------------------
+
+# 1) Graficar señal original y filtrada para comparar
+plt.figure(figsize=(12, 4))
+plt.plot(time, signal_data, label="ECG Original", alpha=0.7)
+plt.plot(time, ecg_filtered, label="ECG Filtrada (0.5–40 Hz)", alpha=0.7)
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud")
+plt.title("Comparación: ECG original vs filtrada")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# ------------------------------------
+# CALCULO PEARSON VS LAG 
+# ------------------------------------
+
+def pearson_lag(x, y, lag=0):
+    """ Calcula correlación de Pearson entre dos señales con desfase (lag) """
+    if lag > 0:
+        return np.corrcoef(x[lag:], y[:-lag])[0, 1]
+    elif lag < 0:
+        lag = -lag
+        return np.corrcoef(x[:-lag], y[lag:])[0, 1]
+    else:
+        return np.corrcoef(x, y)[0, 1]
+
+# Definir rango de lags (ej: ±200 muestras, aprox medio segundo a 400 Hz)
+lags = np.arange(-200, 201)
+pearson_vs_lag = [pearson_lag(signal_data, ecg_filtered, lag=int(k)) for k in lags]
+
+# ------------------------------------
+# GRAFICAR CORRELACIÓN PEARSON VS LAG
+# ------------------------------------
+plt.figure(figsize=(8, 4))
+plt.stem(lags, pearson_vs_lag, basefmt="k-")
+plt.xlabel("Lag (muestras)")
+plt.ylabel("Coeficiente de Pearson")
+plt.title("Correlación de Pearson ECG original vs filtrada según lag")
+plt.grid(True)
+plt.show()
