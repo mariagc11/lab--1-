@@ -12,6 +12,7 @@ El presente laboratorio tiene como propósito analizar y aplicar los conceptos d
 La convolución es una operación matemática fundamental en el análisis de sistemas lineales e invariantes en el tiempo (LTI). Permite calcular la salida de un sistema cuando se conoce su respuesta el impulso h[n] y la señal de entrada x[n].
 
 La definición discreta de la convolución 
+
 <img width="476" height="99" alt="image" src="https://github.com/user-attachments/assets/d30f9505-1033-466a-9e1d-95860d5504e0" />
 
 
