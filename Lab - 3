@@ -1,0 +1,161 @@
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.io import wavfile
+from scipy.signal import butter, lfilter
+from sklearn.decomposition import FastICA
+
+# ------------------- CONFIG -------------------
+BASE_DIR = r"C:\Users\majo1\OneDrive\Escritorio\señales\lab señales\lab 3"
+ARCHIVOS = [
+    "señalgabi.wav",
+    "señalmartin.wav",
+    "señalmajo.wav",
+    "Ambiente.wav"
+]
+
+OUT_DIR = os.path.join(BASE_DIR, "señales_separadas")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+def to_mono(x):
+    return x[:,0] if x.ndim==2 else x
+
+def butter_bandpass(lowcut, highcut, fs, order=4):
+    from scipy.signal import butter
+    nyq = 0.5*fs
+    b,a = butter(order, [lowcut/nyq, highcut/nyq], btype='band')
+    return b,a
+
+def butter_bandpass_filter(data, lowcut, highcut, fs, order=4):
+    b,a = butter_bandpass(lowcut, highcut, fs, order=order)
+    return lfilter(b, a, data)
+
+def potencia(x):  # potencia media
+    x = x.astype(np.float64)
+    return np.mean(x*x)
+
+def ensure_exists(fp):
+    if not os.path.exists(fp):
+        raise FileNotFoundError(f"No existe: {fp}")
+
+# ------------------- CARGA Y POTENCIAS -------------------
+potencias = {}
+seniales = {}
+fs_map = {}
+for nombre in ARCHIVOS:
+    fp = os.path.join(BASE_DIR, nombre)
+    ensure_exists(fp)
+    fs, x = wavfile.read(fp)        # scipy devuelve (fs, data)
+    x = to_mono(x).astype(np.float32)
+    seniales[nombre] = x
+    fs_map[nombre] = fs
+    potencias[nombre] = potencia(x)
+
+# Verificar que todas tengan misma Fs
+fs_vals = list(fs_map.values())
+assert all(f==fs_vals[0] for f in fs_vals), f"Fs distintas: {fs_vals}"
+fs = fs_vals[0]
+
+# ------------------- CÁLCULO SNR (referencia: Ambiente.wav) -------------------
+nombre_ruido = "Ambiente.wav"
+P_ruido = potencias.get(nombre_ruido, None)
+print("\n=== SNR de señales de entrada (referencia: Ambiente.wav) ===")
+snr_in = {}
+for nombre in ARCHIVOS:
+    P_sig = potencias[nombre]
+    if nombre == nombre_ruido:
+        snr_db = 0.0
+    else:
+        snr_db = 10*np.log10(P_sig/(P_ruido+1e-20)) if (P_ruido is not None and P_ruido>0) else float('-inf')
+    snr_in[nombre] = snr_db
+    print(f"SNR de {nombre}: {snr_db:.2f} dB")
+
+# ------------------- GRÁFICOS TIEMPO + FFT -------------------
+colores_tiempo = {
+    "señalgabi.wav": "C0",
+    "señalmartin.wav": "C1",
+    "señalmajo.wav": "C2",
+    "Ambiente.wav":"C3"
+}
+
+colores_freq  = colores_tiempo
+
+for nombre in ARCHIVOS:
+    x = seniales[nombre].astype(np.float32)
+    x_norm = x/(np.max(np.abs(x))+1e-12)
+    t = np.arange(len(x_norm))/fs
+    N = len(x_norm)
+    Xf = np.fft.fft(x_norm)
+    freqs = np.fft.fftfreq(N, d=1/fs)
+    mag = np.abs(Xf[:N//2]); fpos = freqs[:N//2]
+
+    plt.figure(figsize=(12,5))
+    plt.subplot(1,2,1)
+    plt.plot(t, x_norm, color=colores_tiempo[nombre], alpha=0.85)
+    plt.xlabel("Tiempo (s)"); plt.ylabel("Amplitud")
+    plt.title(f"Señal Temporal - {nombre}  |  SNR: {snr_in[nombre]:.2f} dB")
+    plt.grid(True, linestyle='--', alpha=0.5)
+
+    plt.subplot(1,2,2)
+    plt.plot(fpos, mag, color=colores_freq[nombre], alpha=0.85,
+             label=f"SNR: {snr_in[nombre]:.2f} dB")
+    plt.xlabel("Frecuencia (Hz)"); plt.ylabel("Magnitud")
+    plt.title(f"Espectro de Frecuencia - {nombre}")
+    plt.grid(True, linestyle='--', alpha=0.5); plt.legend()
+    plt.xscale("log"); plt.xlim(20, min(10000, fs/2))
+    plt.tight_layout(); plt.show()
+
+# ------------------- MATRIZ PARA ICA (recorte a la más corta) -------------------
+nombres_fuentes = [n for n in ARCHIVOS if n != nombre_ruido]   # 3 voces
+Lmin = min(len(seniales[n]) for n in nombres_fuentes)
+X = np.vstack([seniales[n][:Lmin] for n in nombres_fuentes]).T  # (N,3)
+
+# ------------------- ICA -------------------
+ica = FastICA(n_components=X.shape[1], random_state=0, whiten="unit-variance")
+S_ica = ica.fit_transform(X)     # (N,3) componentes separadas
+
+# ------------------- FILTRO PASA-BANDA 150–4000 Hz -------------------
+S_ica_filt = np.zeros_like(S_ica)
+for i in range(S_ica.shape[1]):
+    S_ica_filt[:, i] = butter_bandpass_filter(S_ica[:, i], 150, 4000, fs, order=4)
+
+# ------------------- SELECCIÓN DE COMPONENTE PREDOMINANTE -------------------
+energias = [np.sum(S_ica_filt[:, i]**2) for i in range(S_ica_filt.shape[1])]
+idx_voz = int(np.argmax(energias))
+voz_filtrada = S_ica_filt[:, idx_voz]
+
+# ------------------- SNR DESPUÉS (comparado contra Ambiente) -------------------
+# Empatar longitudes de ruido a la señal resultante
+ruido = seniales[nombre_ruido][:len(voz_filtrada)]
+P_voz = potencia(voz_filtrada)
+P_ruido_match = potencia(ruido)
+snr_out = 10*np.log10((P_voz+1e-20)/(P_ruido_match+1e-20))
+print(f"\n=== SNR después de ICA+filtro (componente predominante) ===\nSNR_out = {snr_out:.2f} dB")
+
+# ------------------- GUARDADOS -------------------
+# Guardar componente predominante (normalizada) como voz_sin_ruido.wav
+voz_norm = voz_filtrada/(np.max(np.abs(voz_filtrada))+1e-12)
+wavfile.write(os.path.join(BASE_DIR, "voz_sin_ruido.wav"),
+              fs, (voz_norm*32767).astype(np.int16))
+
+# Guardar todas las componentes separadas
+for i in range(S_ica_filt.shape[1]):
+    y = S_ica_filt[:, i]
+    y = y/(np.max(np.abs(y))+1e-12)
+    wavfile.write(os.path.join(OUT_DIR, f"voz_separada_{i+1}.wav"),
+                  fs, (y*32767).astype(np.int16))
+
+print("Archivos guardados en:")
+print(" -", os.path.join(BASE_DIR, "voz_sin_ruido.wav"))
+print(" -", OUT_DIR)
+
+# ------------------- GRÁFICOS DE SEPARADAS -------------------
+for i in range(S_ica_filt.shape[1]):
+    y = S_ica_filt[:, i]
+    t = np.arange(len(y))/fs
+    plt.figure(figsize=(10,4))
+    plt.plot(t, y, alpha=0.9)
+    plt.xlabel("Tiempo (s)"); plt.ylabel("Amplitud")
+    plt.title(f"Señal separada (filtrada) {i+1}")
+    plt.grid(True, linestyle='--', alpha=0.5)
+    plt.tight_layout(); plt.show()
